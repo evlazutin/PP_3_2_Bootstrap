@@ -9,20 +9,22 @@
     <title sec:authorize="hasRole('ROLE_USER')">User page</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse show" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <b><a class="nav-link active" th:text="${user.email}"></a></b>
-                <a class="nav-link active">with roles: </a>
-                <a class="nav-link active" th:text="${user.authorities}"></a>
+<div sec:authorize="isAuthenticated()">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse show" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <b><a class="nav-link active" th:text="${#authentication.name}"></a></b>
+                    <a class="nav-link active">with roles: </a>
+                    <a class="nav-link active" th:text="${#authentication.authorities}"></a>
+                </div>
             </div>
-        </div>
-        <span class="navbar-text">
+            <span class="navbar-text">
       <a th:href="@{/logout}">Logout</a>
     </span>
-    </div>
-</nav>
+        </div>
+    </nav>
+</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-2 mt-3 p-0">
@@ -50,13 +52,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:object="${user}">
-                                <td th:text="${user.id}">ID</td>
-                                <td th:text="${user.username}">First Name</td>
-                                <td th:text="${user.lastName}">Last Name</td>
-                                <td th:text="${user.age}">Age</td>
-                                <td th:text="${user.email}">Email</td>
-                                <td th:text="${user.authorities}">Role</td>
+                            <tr th:object="${userInfo}">
+                                <td th:text="${userInfo.id}">ID</td>
+                                <td th:text="${userInfo.username}">First Name</td>
+                                <td th:text="${userInfo.lastName}">Last Name</td>
+                                <td th:text="${userInfo.age}">Age</td>
+                                <td th:text="${userInfo.email}">Email</td>
+                                <td th:text="${userInfo.authorities}">Role</td>
                             </tr>
                             </tbody>
                         </table>

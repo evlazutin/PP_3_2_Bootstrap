@@ -27,9 +27,9 @@
 </div>
 
 <!--sec:authorize="hasRole('ROLE_ADMIN')"-->
-<!--sec:authorize="hasRole('ROLE_ADMIN')"-->
+<!--sec:authorize="hasRole('ROLE_USER')"-->
 
-<div class="container-fluid">
+<div sec:authorize="hasRole('ROLE_ADMIN')" class="container-fluid">
     <div class="row">
         <div class="col-2 mt-3 p-0">
             <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
